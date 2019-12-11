@@ -36,8 +36,8 @@ class FourMomentum(object):
 
         elif isinstance(other, (int, long, float, complex)) and not isinstance(other, bool):
             # multiplication with a scalar
-            new_fourvector = FourVector(self.E*other, self.px*other, self.py*other, self.pz*other)
-            return new_fourvector
+            new_fourmomentum = FourMomentum(self.E*other, self.px*other, self.py*other, self.pz*other)
+            return new_fourmomentum
 
     # multiplication is commutative
     __rmul__ = __mul__
