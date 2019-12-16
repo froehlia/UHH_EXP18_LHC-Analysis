@@ -25,18 +25,19 @@ class FourMomentum(object):
         returns scalar if multiplication with other FourMomentum (aka scalar product)
         reutrns FourMomentum if multiplication with number
         """
+        # check if is multiplied with four-vector
         if isinstance(other, FourMomentum):
             # scalar product of two four-vectors
             result = 0.0
 
             # Exercise 1.2 invariant mass:
             # this part needs to be implemented
-
             return result
 
+        # check if is multiplied with number
         elif isinstance(other, (int, long, float, complex)) and not isinstance(other, bool):
             # multiplication with a scalar
-            new_fourmomentum = FourMomentum(self.E*other, self.px*other, self.py*other, self.pz*other)
+            new_fourmomentum = FourMomentum(self.px*other, self.py*other, self.pz*other, self.E*other)
             return new_fourmomentum
 
     # multiplication is commutative
@@ -46,20 +47,19 @@ class FourMomentum(object):
         """
         return transverse momentum
         """
-        return math.sqrt(self.px**2 + self.py**2)
+        return math.sqrt(self.px**2.0 + self.py**2.0)
 
     def eta(self):
         """
         return pseudorapidity
         """
-        theta = math.atan(self.py/self.px)
-        return -1 * math.log(math.tan(theta/2))
+        return math.atanh(self.pz / math.sqrt(self.px**2 + self.py**2 + self.pz**2))
 
     def phi(self):
         """
         return azimuthal angle phi
         """
-        return math.acos(self.pz / math.sqrt(self.px**2 + self.py**2 + self.pz**2))
+        return math.atan2(self.py, self.px)
     
     def E(self):
         """
