@@ -22,7 +22,6 @@ class Analyzer(object):
         The analyzer will call all attached histograms when
         fill_histograms is called.
         """
-        histogram.set_name(self.dataset_name+"_"+histogram.name)
         self.histograms[name].append(histogram)
 
     def detach_histogram(self, histogram, name):

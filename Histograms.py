@@ -10,9 +10,6 @@ class Histograms(object):
         if not self.hists:
             self.hists = {}
         self.is_init = False
-
-    def set_name(self,name):
-        self.name = name
         self.initialize_histograms()
 
     def initialize_histograms(self):
@@ -20,6 +17,7 @@ class Histograms(object):
         Add collection name to histograms to avoid root overwriting
         histograms with same name.
         """
+        # prevent to initialize histograms multiple times
         if self.is_init:
             raise ValueError("Histograms(): called initialize_histograms() on initialized histograms")
         for hist in self.hists.values():

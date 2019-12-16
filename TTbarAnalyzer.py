@@ -15,8 +15,8 @@ class TTbarAnalyzer(Analyzer):
         ################
 
         ## Add the Histograms you want to use here
-        self.attach_histogram(DefaultHistograms("no_cuts"), "no_cuts")
-        self.attach_histogram(DefaultHistograms("trigger"), "trigger")
+        self.attach_histogram(DefaultHistograms(dataset_name+"_no_cuts"), "no_cuts")
+        self.attach_histogram(DefaultHistograms(dataset_name+"trigger"), "trigger")
         
         ## Here you can define your own variables ##
         self.n_total = 0.0
@@ -26,6 +26,7 @@ class TTbarAnalyzer(Analyzer):
         This method is called for each event.
         You can fill all attatched histograms using self.fill_histograms(event, <hist_name>).
         """
+
         # increase total number of events for processed dataset
         self.n_total += 1
         # fill initial histogram
