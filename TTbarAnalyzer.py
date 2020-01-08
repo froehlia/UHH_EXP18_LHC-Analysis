@@ -1,5 +1,4 @@
 from Analyzer import Analyzer
-from collections import defaultdict
 from uhhHists import DefaultHistograms
 
 class TTbarAnalyzer(Analyzer):
