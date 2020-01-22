@@ -1,5 +1,5 @@
 import ROOT
-from collections import defaultdict
+from collections import OrderedDict
 
 class Histograms(object):
     """
@@ -8,7 +8,7 @@ class Histograms(object):
     def __init__(self, name):
         self.name = name
         if not self.hists:
-            self.hists = {}
+            self.hists = OrderedDict()
         self.is_init = False
         self.initialize_histograms()
 
