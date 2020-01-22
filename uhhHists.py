@@ -1,6 +1,6 @@
 from Histograms import Histograms
 from ROOT import TH1F
-from collection import OrderedDict
+from collections import OrderedDict
 
 class DefaultHistograms(Histograms):
     """
