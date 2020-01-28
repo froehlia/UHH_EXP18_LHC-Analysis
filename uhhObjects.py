@@ -18,10 +18,7 @@ class Jet(FourMomentum):
         super(Jet, self).__init__(px, py, pz, E)
         self.has_b_tag = False
 
-class MET(object):
+class MET(FourMomentum):
     def __init__(self,px=0,py=0):
-        self.px = px
-        self.py = py
-    def pt(self):
-        return math.sqrt(px*px + py*py)
+        super(MET, self).__init__(px,py,0,0)
 
