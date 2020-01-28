@@ -1,7 +1,7 @@
 import ROOT
 from EventBuilder import EventBuilder
 from Event import Event
-from collections import defaultdict
+from collections import OrderedDict
 
 class Analyzer(object):
     """
@@ -12,7 +12,7 @@ class Analyzer(object):
         self.dataset_name = dataset_name
         self.file_name = file_name
         self.event_builder = EventBuilder(event_options)
-        self.histograms = defaultdict(list)
+        self.histograms = OrderedDict()
         self.working_dataset = None
 
     def attach_histogram(self, histogram, name):
@@ -22,20 +22,19 @@ class Analyzer(object):
         The analyzer will call all attached histograms when
         fill_histograms is called.
         """
-        self.histograms[name].append(histogram)
+        self.histograms[name] = histogram
 
-    def detach_histogram(self, histogram, name):
+    def detach_histogram(self, name):
         """
         Detach a histogram from the analyzer.
         """
-        self.histogram[name].remove(histogram)
+        self.histogram.remove(name)
 
     def fill_histograms(self, event, name):
         """
         Fill all attatched histograms.
         """
-        for hist in self.histograms[name]:
-            hist.fill(event)
+        self.histograms[name].fill(event)
 
     def run(self):
         """
@@ -64,9 +63,8 @@ class Analyzer(object):
         for name in self.histograms.keys():
             tdir = f.mkdir(name)
             tdir.cd()
-            for hists in self.histograms[name]:
-                for hist in hists.hists.values():
-                    hist.Write()
+            for hist in self.histograms[name].hists.values():
+                hist.Write()
         f.Close()
 
     def process(self, event):
