@@ -12,7 +12,7 @@ class Plotter(object):
         # set default plotting style
         self.style = default_style()
         ROOT.gROOT.SetStyle("MyStyle");
-        self.colors = {'TTbar':632, 'single top':798, 'W+jets':603}
+        self.colors = {'TTbar':632, 'single top':798, 'W+jets':602, 'QCD':867, 'DY+jets':829, 'Diboson':875}
         self.logy = False
         self.hists_data = []
         self.hists_stack = []
