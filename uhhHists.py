@@ -22,7 +22,7 @@ class DefaultHistograms(Histograms):
                       ('jet3_eta',     TH1F('jet3_eta','#eta_{jet}', 50,-5.0,5.0)),
                       ('jet3_phi',     TH1F('jet3_phi','#phi_{jet}', 40,-3.2,3.2)),
                       ('met_pt',       TH1F('met_pt','p_{T,miss}', 60,0,300)),
-                      ('met_phi',      TH1F('met_phi','#phi_{MET}', 40,-3.2,3.2))
+                      ('met_phi',      TH1F('met_phi','#phi_{MET}', 40,-3.2,3.2)),
                       ])
         ## DO NOT TOUCH THIS PART ##
         name = name + "_default"
@@ -68,3 +68,22 @@ class DefaultHistograms(Histograms):
         self.hists['met_phi'].Fill(event.met.phi(), event_weight)
 
         # other histograms go here
+
+class TopMassHist(Histograms):
+    def __init__(self, name):
+        self.hists = OrderedDict([('top_mass', TH1F('top_mass','M_{T}', 60,0,300))
+                                  ])
+        ## DO NOT TOUCH THIS PART ##
+        name = name + "_default"
+        super(TopMassHist, self).__init__(name)
+
+    def fill(self, event):
+        """
+        Here the histograms are filled.
+        """
+
+        event_weight = event.weight
+
+        #fill top hists
+        if event.top_mass > 0.0:
+            self.hists['top_mass'].Fill(event.top_mass, event_weight)

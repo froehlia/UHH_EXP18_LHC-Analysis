@@ -10,6 +10,7 @@ class Event(object):
         self.met = None
         self.trigger = {}
         self.weight = 1.0
+        self.top_mass = 0.0
 
     def n_jets(self):
         """
