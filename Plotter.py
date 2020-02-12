@@ -1,5 +1,6 @@
 import ROOT
 ROOT.gROOT.SetBatch(True)
+ROOT.gErrorIgnoreLevel = 2002
 from collections import OrderedDict, defaultdict
 
 class Plotter(object):
@@ -100,6 +101,6 @@ def default_style():
     MyStyle.SetTitleSize(0.05, "y");
     MyStyle.SetTitleSize(0.05, "z");
     MyStyle.SetTickLength(0.02,"x");
-    MyStyle.SetOptLogy(True)
+    MyStyle.SetOptLogy(False)
     return MyStyle
 
