@@ -23,7 +23,7 @@ class TTbarAnalyzer(Analyzer):
         self.attach_histogram(TopMassHist(dataset_name+"_top_mass"), "top_mass")
         
         ##Creating the class that will reconstruct the top mass
-        self.TopReconstruction = TopReco(10.0,3,6)
+        self.TopReconstruction = TopReco(10.0,2,5)
         #TopReco(x,y,z)
         # x = max allowed mass difference between leptonic and hadronic top quark
         # y = minimum number of jets used for reconstruction.
@@ -46,18 +46,6 @@ class TTbarAnalyzer(Analyzer):
 
         # check if event fulfills the "IsoMu24" trigger
         if not event.trigger["IsoMu24"]:
-            return
-
-        ## Using some cuts for testing purposes ##
-        if not event.n_muons() >= 1:
-            return
-        if not event.muons[0].pt() > 30.:
-            return
-        if not event.n_jets() > 2:
-            return
-        if not event.jets[0].pt() > 30:
-            return
-        if not event.n_b_jets() >= 1:
             return
 
         self.fill_histograms(event, "trigger")
