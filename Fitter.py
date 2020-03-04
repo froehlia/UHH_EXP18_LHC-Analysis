@@ -11,6 +11,7 @@ class Fitter(object):
         c = ROOT.TCanvas()
         MyStyle = ROOT.TStyle("MyStyle1","My Root Style1");
         MyStyle.SetOptStat(0);
+        MyStyle.SetOptFit(1);
         ROOT.gROOT.SetStyle("MyStyle1");
         self.top_hist.Draw()
         self.top_hist.Fit("gaus", "Q", "", fit_min, fit_max)
@@ -19,6 +20,8 @@ class Fitter(object):
         self.unc = fit.GetParError(1)
         print('\n\n\n----------------------------------------------------------')
         output = 'Fitted top quark mass: ' + str(self.mean) + ' +- ' +  str(self.unc) + ' GeV\n\n'
+        print(output)
+        output = 'With ' + str(self.top_hist.GetEntries()) + ' top quark candidates'
         print(output)
         c.SaveAs("plots/ReconstructedTopMass.pdf")
         del c

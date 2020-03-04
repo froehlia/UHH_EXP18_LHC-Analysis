@@ -38,9 +38,11 @@ class Plotter(object):
                         hist.SetMarkerColor(1)
                         self.hists_data.append(hist)
                     i += 1
+
 # self.histograms = {d:{{process:hist} for process in analyzers.keys()] for d in dirs}
 
     def process(self):
+        s=""
         for i in range(0,len(self.hists_stack)):
             h = self.hists_stack[i]
             c = ROOT.TCanvas("c","c",600,600)
@@ -57,6 +59,21 @@ class Plotter(object):
                 self.hists_data[i].Draw("PSAME")
                 c.BuildLegend(0.75,0.35,0.95,0.95,"");
                 c.Print("plots/"+"_".join(h.GetName().split("_")[1:])+".pdf")
+
+            old_s = s
+            s = "_".join(h.GetName().split("_")[1:])
+            s = "".join(s.split("_default")[0:1])+".pdf"
+            if(s != old_s):
+                if(i == len(self.hists_stack) - 1):
+                    c.Print(s)
+                else:
+                    c.Print(s+"(")
+                if(old_s != ""):
+                    c.Print(old_s+"]")
+            elif(i == len(self.hists_stack) - 1):
+                c.Print(s+")")
+            else:
+                c.Print(s)
             del c
 
 def default_style():
@@ -101,6 +118,6 @@ def default_style():
     MyStyle.SetTitleSize(0.05, "y");
     MyStyle.SetTitleSize(0.05, "z");
     MyStyle.SetTickLength(0.02,"x");
-    MyStyle.SetOptLogy(False)
+    MyStyle.SetOptLogy(True)
     return MyStyle
 
