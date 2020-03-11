@@ -45,7 +45,7 @@ class Plotter(object):
         s=""
         for i in range(0,len(self.hists_stack)):
             h = self.hists_stack[i]
-            c = ROOT.TCanvas("c","c",600,600)
+            c = ROOT.TCanvas("c","c",800,600)
             h.SetMinimum(0.8)
             h.Draw("hist")
             h.GetXaxis().SetTitle(h.GetTitle())
@@ -106,7 +106,9 @@ def default_style():
     MyStyle.SetMarkerSize(0.8);
     MyStyle.SetTickLength(0.03);
     MyStyle.SetTitleOffset(1.5, "x");
-    MyStyle.SetTitleOffset(1.5, "y");
+    #modified
+    MyStyle.SetTitleOffset(2.0, "y");
+    #
     MyStyle.SetTitleOffset(1.0, "z");
     MyStyle.SetLabelSize(0.05, "x");
     MyStyle.SetLabelSize(0.05, "y");
