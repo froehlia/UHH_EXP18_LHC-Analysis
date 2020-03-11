@@ -23,7 +23,7 @@ class TTbarAnalyzer(Analyzer):
         self.attach_histogram(TopMassHist(dataset_name+"_top_mass"), "top_mass")
         
         ##Creating the class that will reconstruct the top mass
-        self.TopReconstruction = TopReco(10.0,2,5)
+        self.TopReconstruction = TopReco(10.0,2,4)
         #TopReco(x,y,z)
         # x = max allowed mass difference between leptonic and hadronic top quark
         # y = minimum number of jets used for reconstruction.
@@ -44,12 +44,37 @@ class TTbarAnalyzer(Analyzer):
         # fill initial histogram
         self.fill_histograms(event, "no_cuts")
 
+        # +++++++++++++++++++++++++++++++++++++++++++
+        # Exercise 1: MC / data comparisons
+        # +++++++++++++++++++++++++++++++++++++++++++
+
         # check if event fulfills the "IsoMu24" trigger
         if not event.trigger["IsoMu24"]:
             return
 
-        self.fill_histograms(event, "trigger")
         # only events fulfilling the "IsoMu24" trigger will be further processed
+        self.fill_histograms(event, "trigger")
+
+        # Have a look at your histograms and compare the different background samples.
+        # Try to enrich the fraction of ttbar by cutting on any of the distributions 
+        # Plot all variables after every cut you introduce. Therefore define a new set of Histogramms at the top of this program 
+
+        # +++++++++++++++++++++++++++++++++++++++++++
+        # Exercise 2: Measurement of the cross section
+        # +++++++++++++++++++++++++++++++++++++++++++
+
+        # Once you have optimized your event selection, define a variable in __init__ for the weighted number of selected events. 
+        # Also, define a variable for the weighted number of generated events. With these numbers, 
+        # the selection efficiency can be calculated. Afterwards, move to the 'Analysis.py' 
+        # file to determine the efficiency and the ttbar cross section.
+
+        # ++++++++++++++++++++++++++++++++++++++++++++
+        # Exercise 3: Reconstruction of the top quark mass
+        # ++++++++++++++++++++++++++++++++++++++++++++
+
+        # Start off with a new event selection here
+        # Decomment the following part to enable the top quark reconstruction.
+        # Decomment the lines responsible for fitting the top mass in 'Analysis.py'. You may modify the variables x,y in fit(x,y)
 
         ## Top Quark Reconstruction ##
         #mass = self.TopReconstruction.calculateTopMass(event.jets, event.met, event.muons[0])
