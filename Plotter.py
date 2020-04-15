@@ -12,9 +12,9 @@ class Plotter(object):
     def __init__(self, analyzers):
         # set default plotting style
         self.style = default_style()
+        self.style.SetOptLogy(True)
         ROOT.gROOT.SetStyle("MyStyle");
         self.colors = {'TTbar':632, 'single top':798, 'W+jets':602, 'QCD':867, 'DY+jets':829, 'Diboson':875}
-        self.logy = False
         self.hists_data = []
         self.hists_stack = []
 
@@ -46,6 +46,7 @@ class Plotter(object):
         for i in range(0,len(self.hists_stack)):
             h = self.hists_stack[i]
             c = ROOT.TCanvas("c","c",800,600)
+            if h.GetMaximum() <= 0: h.SetMaximum(1)
             h.SetMinimum(0.8)
             h.Draw("hist")
             h.GetXaxis().SetTitle(h.GetTitle())
@@ -120,6 +121,5 @@ def default_style():
     MyStyle.SetTitleSize(0.05, "y");
     MyStyle.SetTitleSize(0.05, "z");
     MyStyle.SetTickLength(0.02,"x");
-    MyStyle.SetOptLogy(True)
     return MyStyle
 
