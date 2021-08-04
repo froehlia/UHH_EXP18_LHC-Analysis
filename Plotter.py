@@ -17,6 +17,7 @@ class Plotter(object):
         self.colors = {'TTbar':632, 'single top':798, 'W+jets':602, 'QCD':867, 'DY+jets':829, 'Diboson':875}
         self.hists_data = []
         self.hists_stack = []
+        self.hists_err = []
 
         # loop over all histograms
         # apply dataset specific styling and create THStack and TH1 objects for plotting
@@ -30,8 +31,15 @@ class Plotter(object):
                             hist.SetFillColor(self.colors[process])
                         if i >= len(self.hists_stack):
                             self.hists_stack.append(ROOT.THStack(hist.GetName()+"_stack", hist.GetTitle()))
+                            self.hists_err.append(hist.Clone(hist.GetName()+"_err"))
+                            self.hists_err[i].SetTitle("stat. Uncert.")
+                            self.hists_err[i].Reset()
+                            self.hists_err[i].SetFillColor(923)
+                            self.hists_err[i].SetFillStyle(3005)
+                            self.hists_err[i].SetLineWidth(0)                            
                         hist.SetTitle(process)
                         self.hists_stack[i].Add(hist)
+                        self.hists_err[i].Add(hist)
                     else:
                         hist.SetTitle(process)
                         hist.SetMarkerStyle(20)
@@ -54,10 +62,12 @@ class Plotter(object):
             h.GetYaxis().SetTitle("Events")
             h.GetYaxis().SetTitleOffset(1.3)
             c.Modified()
+            self.hists_err[i].Draw("E2SAME")
+            c.Modified()
             c.BuildLegend(0.76,0.4,0.95,0.95,"");
             c.Print("plots/"+"_".join(h.GetName().split("_")[1:])+"_MC.pdf")
             if len(self.hists_data) > 0:
-                self.hists_data[i].Draw("PSAME")
+                self.hists_data[i].Draw("PESAME")
                 c.BuildLegend(0.75,0.35,0.95,0.95,"");
                 c.Print("plots/"+"_".join(h.GetName().split("_")[1:])+".pdf")
 
