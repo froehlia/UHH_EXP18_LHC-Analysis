@@ -23,6 +23,13 @@ class DefaultHistograms(Histograms):
                       ('jet3_phi',     TH1F('jet3_phi','#phi_{jet}', 40,-3.2,3.2)),
                       ('met_pt',       TH1F('met_pt','p_{T,miss}', 60,0,300)),
                       ('met_phi',      TH1F('met_phi','#phi_{MET}', 40,-3.2,3.2)),
+                      ('bjets_number' , TH1F('bjets_number', 'N_{b-jets}', 11, -0.5, 10.5)),
+                      ('bjet1_pt',      TH1F('bjet1_pt','p_{T,b-jet} [GeV]', 60,0,300)),
+                      ('bjet1_eta',     TH1F('bjet1_eta','#eta_{b-jet}', 50,-5.0,5.0)),
+                      ('bjet1_phi',     TH1F('bjet1_phi','#phi_{b-jet}', 40,-3.2,3.2)),
+                      ('bjet2_pt',      TH1F('bjet2_pt','p_{T,b-jet} [GeV]', 60,0,300)),
+                      ('bjet2_eta',     TH1F('bjet2_eta','#eta_{b-jet}', 50,-5.0,5.0)),
+                      ('bjet2_phi',     TH1F('bjet2_phi','#phi_{b-jet}', 40,-3.2,3.2)),
                       ])
         ## DO NOT TOUCH THIS PART ##
         name = name + "_default"
@@ -66,6 +73,23 @@ class DefaultHistograms(Histograms):
         # fill met hists
         self.hists['met_pt'].Fill(event.met.pt(), event_weight)
         self.hists['met_phi'].Fill(event.met.phi(), event_weight)
+
+        # fill b-jet hists
+        self.hists['bjets_number'].Fill(event.n_b_jets(), event_weight)
+        i_bjet = 0
+        for b_jet in event.b_jets:
+            i_bjet += 1
+            if i_bjet == 1:
+                self.hists['bjet1_pt'].Fill(b_jet.pt(), event_weight)
+                self.hists['bjet1_eta'].Fill(b_jet.eta(), event_weight)
+                self.hists['bjet1_phi'].Fill(b_jet.phi(), event_weight)
+            elif i_bjet == 2:
+                self.hists['bjet2_pt'].Fill(b_jet.pt(), event_weight)
+                self.hists['bjet2_eta'].Fill(b_jet.eta(), event_weight)
+                self.hists['bjet2_phi'].Fill(b_jet.phi(), event_weight)
+            elif i_bjet > 2:
+                break
+        
 
         # other histograms go here
 
