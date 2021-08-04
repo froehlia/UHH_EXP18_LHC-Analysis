@@ -7,6 +7,7 @@ class Event(object):
     def __init__(self):
         self.muons = []
         self.jets = []
+        self.b_jets = []
         self.met = None
         self.trigger = {}
         self.weight = 1.0
@@ -28,4 +29,4 @@ class Event(object):
         """
         returns number of b-tagged jets.
         """
-        return len([jet for jet in self.jets if jet.has_b_tag])
+        return len(self.b_jets)

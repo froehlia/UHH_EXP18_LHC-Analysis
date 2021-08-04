@@ -45,5 +45,6 @@ class EventBuilder(object):
             jet = self.JEC * jet
             jet.has_b_tag = tree.Jet_btag[i] > self.btag_threshold
             event.jets.append(jet)
-
+            if jet.has_b_tag:
+                event.b_jets.append(jet)
         return event
