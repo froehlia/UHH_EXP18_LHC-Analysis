@@ -14,6 +14,10 @@ class Analyzer(object):
         self.event_builder = EventBuilder(event_options)
         self.histograms = OrderedDict()
         self.working_dataset = None
+        self.max_events = -1
+        if "max_events" in event_options:
+            self.max_events = event_options["max_events"]
+
 
     def attach_histogram(self, histogram, name):
         """
@@ -44,6 +48,8 @@ class Analyzer(object):
         f = ROOT.TFile.Open('files/'+self.file_name)
         n_event = 0
         for event_data in f.events:
+            if self.max_events > 0 and n_event >= self.max_events:
+                continue
             n_event += 1
             if n_event % 10000 == 0: print "%d events processed" % n_event
             # build event from TTree
