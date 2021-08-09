@@ -1,3 +1,4 @@
+import sys,os
 import ROOT
 ROOT.gROOT.SetBatch(True)
 ROOT.gErrorIgnoreLevel = 2002
@@ -18,7 +19,8 @@ class Plotter(object):
         self.hists_data = []
         self.hists_stack = []
         self.hists_err = []
-
+        if not os.path.exists('plots'):
+            os.makedirs('plots')
         # loop over all histograms
         # apply dataset specific styling and create THStack and TH1 objects for plotting
         for process in analyzers.keys():
