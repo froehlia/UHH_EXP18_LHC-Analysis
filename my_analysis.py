@@ -42,9 +42,11 @@ if __name__ == "__main__":
     # Exercise 2: Measurement of the cross section
     # +++++++++++++++++++++++++++++++++++++++++++
     #Access variables from TTbarAnalyzer like this:
-    print analyzers['TTbar'].n_total
+    n_ttbar = analyzers['TTbar'].n_total
+    print "Total Number of ttbar events: {0}".format(n_ttbar)
     n_background_total = sum([an.n_total for key, an in analyzers.iteritems() if not (key == 'Data' or key == 'TTbar')])
-
+    print "Total Number of background events: {0}".format(n_background_total)
+    
     #plotting the output
     plotter = Plotter(analyzers)
     plotter.process()
