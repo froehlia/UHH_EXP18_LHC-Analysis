@@ -44,33 +44,35 @@ class TTbarAnalyzer(Analyzer):
         # fill initial histogram
         self.fill_histograms(event, "no_cuts")
 
-        # +++++++++++++++++++++++++++++++++++++++++++
+        # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         # Exercise 1: MC / data comparisons
-        # +++++++++++++++++++++++++++++++++++++++++++
+        # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+        # Event selection:
         # check if event fulfills the "IsoMu24" trigger
         if not event.trigger["IsoMu24"]:
-            return
-
+            return 
         # only events fulfilling the "IsoMu24" trigger will be further processed
+        
+        # fill histograms for all events passing the trigger selection
         self.fill_histograms(event, "trigger")
 
         # Have a look at your histograms and compare the different background samples.
-        # Try to enrich the fraction of ttbar by cutting on any of the distributions 
+        # Try to enrich the fraction of ttbar events by cutting on any of the distributions 
         # Plot all variables after every cut you introduce. Therefore define a new set of Histogramms at the top of this program 
 
-        # +++++++++++++++++++++++++++++++++++++++++++
-        # Exercise 2: Measurement of the cross section
-        # +++++++++++++++++++++++++++++++++++++++++++
+        # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        # Exercise 2: Measurement of the ttbar production cross section
+        # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
         # Once you have optimized your event selection, define a variable in __init__ for the weighted number of selected events. 
         # Also, define a variable for the weighted number of generated events. With these numbers, 
         # the selection efficiency can be calculated. Afterwards, move to the 'Analysis.py' 
         # file to determine the efficiency and the ttbar cross section.
 
-        # ++++++++++++++++++++++++++++++++++++++++++++
+        # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         # Exercise 3: Reconstruction of the top quark mass
-        # ++++++++++++++++++++++++++++++++++++++++++++
+        # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
         # Start off with a new event selection here
         # Decomment the following part to enable the top quark reconstruction.
