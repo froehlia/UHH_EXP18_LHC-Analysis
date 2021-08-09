@@ -30,3 +30,5 @@ if __name__ == "__main__":
 
     plotter = Plotter(analyzers)
     plotter.process()
+
+    print "test analysis finished successfully."
