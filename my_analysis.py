@@ -19,7 +19,7 @@ if __name__ == "__main__":
                                 ('Diboson', 'diboson.root'),
                                 ('DY+jets', 'dy.root'),
                                 ('single top', 'single_top.root'),
-                                ('TTbar', 'ttbar.root'), 
+                                ('TTbar', 'ttbar.root'),
                                 ('W+jets', 'wjets.root'),
         ]
         )
@@ -28,7 +28,7 @@ if __name__ == "__main__":
                                 ('Diboson', 'diboson.root'),
                                 ('DY+jets', 'dy.root'),
                                 ('single top', 'single_top.root'),
-                                ('TTbar', 'ttbar.root'), 
+                                ('TTbar', 'ttbar.root'),
                                 ('W+jets', 'wjets.root'),
         ]
         )
@@ -41,7 +41,7 @@ if __name__ == "__main__":
     analyzers = OrderedDict()
 
     # Analyze all datasets:
-    for name, file_name in datasets.iteritems():
+    for name, file_name in datasets.items():
         analyzer = TTbarAnalyzer(name, file_name, event_options) # create an Analyzer for each dataset
         analyzer.run() # run the Analyzer
         analyzers[name] = analyzer # store the results
@@ -53,10 +53,10 @@ if __name__ == "__main__":
 
     # You can access variables from TTbarAnalyzer like this:
     n_ttbar = analyzers['TTbar'].n_total # get total number of ttbar events
-    print "Total Number of ttbar events: {0}".format(n_ttbar) # write to the console
-    n_background_total = sum([an.n_total for key, an in analyzers.iteritems() if not (key == 'Data' or key == 'TTbar')]) # Sum total number of all events, except data and ttbar
-    print "Total Number of background events: {0}".format(n_background_total)
-    
+    print("Total Number of ttbar events: {0}".format(n_ttbar)) # write to the console
+    n_background_total = sum([an.n_total for key, an in analyzers.items() if not (key == 'Data' or key == 'TTbar')]) # Sum total number of all events, except data and ttbar
+    print("Total Number of background events: {0}".format(n_background_total))
+
     # Plot all histograms filled in the Analysis
     plotter = Plotter(analyzers)
     plotter.process()

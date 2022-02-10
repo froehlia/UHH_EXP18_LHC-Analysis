@@ -21,7 +21,7 @@ class Analyzer(object):
 
     def attach_histogram(self, histogram, name):
         """
-        Attatch a histogram to the analyzer.  
+        Attatch a histogram to the analyzer.
 
         The analyzer will call all attached histograms when
         fill_histograms is called.
@@ -44,20 +44,20 @@ class Analyzer(object):
         """
         Loop over all datasets and process each event.
         """
-        print "Start processing %s."% self.dataset_name
+        print("Start processing %s."% self.dataset_name)
         f = ROOT.TFile.Open('files/'+self.file_name)
         n_event = 0
         for event_data in f.events:
             if self.max_events > 0 and n_event >= self.max_events:
                 continue
             n_event += 1
-            if n_event % 10000 == 0: print "%d events processed" % n_event
+            if n_event % 10000 == 0: print("%d events processed" % n_event)
             # build event from TTree
             event = self.event_builder.build_event(event_data)
             # process event
             self.process(event)
         f.Close()
-        print "Done. Processed %d events." % n_event
+        print("Done. Processed %d events." % n_event)
         self.write_output()
 
     def write_output(self):
@@ -79,4 +79,3 @@ class Analyzer(object):
         Has to be implemented in derived classes.
         """
         raise NotImplementedError()
-

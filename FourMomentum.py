@@ -35,7 +35,7 @@ class FourMomentum(object):
             return result
 
         # check if is multiplied with number
-        elif isinstance(other, (int, long, float, complex)) and not isinstance(other, bool):
+        elif isinstance(other, (int, float, complex)) and not isinstance(other, bool):
             # multiplication with a scalar
             new_fourmomentum = FourMomentum(self.px*other, self.py*other, self.pz*other, self.E*other)
             return new_fourmomentum
@@ -60,7 +60,7 @@ class FourMomentum(object):
         return azimuthal angle phi
         """
         return math.atan2(self.py, self.px)
-    
+
     def E(self):
         """
         return energy
@@ -90,4 +90,3 @@ class FourMomentum(object):
             self.__init__(args[0].px, args[0].py, args[0].pz, args[0].E)
         else:
             raise TypeError("set_v4() takes 1 or 4 arguments (%d given)" % len(args))
-

@@ -8,13 +8,13 @@ if __name__ == "__main__":
     Test Analysis to check if the framework runs properly
     """
 
-    print "Staring test analysis..."
+    print("Staring test analysis...")
     datasets = OrderedDict([('Data', 'data.root'),
                                 ('QCD', 'qcd.root'),
                                 ('Diboson', 'diboson.root'),
                                 ('DY+jets', 'dy.root'),
                                 ('single top', 'single_top.root'),
-                                ('TTbar', 'ttbar.root'), 
+                                ('TTbar', 'ttbar.root'),
                                 ('W+jets', 'wjets.root'), ])
 
     event_options = {'JEC': 'nominal',
@@ -22,7 +22,7 @@ if __name__ == "__main__":
                      'max_events':10
                      }
     analyzers = OrderedDict()
-    for name, file_name in datasets.iteritems():
+    for name, file_name in datasets.items():
         analyzer = TTbarAnalyzer(name, file_name, event_options)
         # run analysis for dataset
         analyzer.run()
@@ -31,4 +31,4 @@ if __name__ == "__main__":
     plotter = Plotter(analyzers)
     plotter.process()
 
-    print "test analysis finished successfully."
+    print("test analysis finished successfully.")
