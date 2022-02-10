@@ -39,13 +39,13 @@ class TopReco:
         #Calculating the neutrino 4-vector by using the missing transverse energy (met)
         solutions = self.neutrinoReconstruction(met, muon)
         if not solutions: return -1
-        
+
         #Counting number of b-tagged jets
         for x in range(len(jets)):
             if(jets[x].has_b_tag):
                 N_bjets += 1
                 B_jet.append(x)
-            
+
         #Looping over all possible neutrino four momentums
         for sol in range(len(solutions)):
             neutrino = FourMomentum(met.px, met.py, solutions[sol], math.sqrt(met.pt()**2+solutions[sol]**2))
@@ -58,7 +58,7 @@ class TopReco:
                 #Calculating the four momentum and the mass of the leptonic top
                 P_lep = neutrino + muon + jets[x]
                 Mt_lep = math.sqrt(P_lep*P_lep)
-                
+
                 #For each leptonic top candidate there are N-1 jets for the hadronic top remaining
                 for l in range(self.njet_min-1,self.njet_max):
                     #Looping over all possible permutations of N-1 jets for the hadronic top
@@ -66,7 +66,7 @@ class TopReco:
                         #We don't want to reuse the jet from the leptonic top
                         if jets[x] in y: continue
                         #Making sure that if possible b_tagged jets are getting used as b-jets
-                        if N_bjets > 1 or (N_bjets is 1 and not jets[x].has_b_tag):
+                        if N_bjets > 1 or (N_bjets == 1 and not jets[x].has_b_tag):
                             Contains_B_jet = False
                             for k in B_jet:
                                 if jets[k] in y:
