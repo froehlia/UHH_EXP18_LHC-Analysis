@@ -1,0 +1,203 @@
+\section{Vorbereitung (vor Praktikumsbeginn)}
+%\section{Durchf\"uhrung}
+\label{tasks}
+Wie \"ublich beginnt auch dieser Praktikumsversuch mit einer Vorbesprechung, in der zun\"achst der theoretische Hintergrund der Analyse diskutiert wird. Im Folgenden finden Sie einen Fragenkatalog, der Ihnen einen Eindruck des Erwartungshorizonts vermittelt.\\
+\underline{Physik des Top-Quarks}
+\begin{itemize}
+	\item Wann und wo wurde das Top-Quark entdeckt?
+	\item Wie schwer ist das Top-Quark? Wie schwer ist es verglichen mit den anderen Teilchen des Standard-Modells?
+	\item Wie werden Top-Quarks (sowohl einzeln als auch in Paaren) am Large-Hadron-Collider erzeugt?
+	\item Wie zerfallen Top-Quarks? Was versteht man unter dem voll-hadronischen, semi-leptonischen und dileptonischen Zerfallskanal?
+	\item Welche Zerfallsprodukte des Top-Quarks k\"onnen mit einem Detektor tats\"achlich gemessen werden?
+	\item Welche anderen (Untergrund)Prozesse ergeben im Detektor wom\"oglich dieselbe Signatur wie ein $t\bar{t}$-Ereignis?
+	%\item wie berechnet man den inklusiven Wirkungsquerschnitt f\"ur $t\bar{t}$-Produktion?
+\end{itemize}
+\underline{Detektor-Physik}
+\begin{itemize}
+	\item Wie misst man den Impuls eines geladenen Teilchens?
+	\item Wie wird die Energie von Elektronen und Photonen gemessen?
+	\item Wie wird die Energie von Hadronen gemessen?
+	\item Warum wird ein separates Myon-System ben\"otigt? Wie funktioniert es?
+\end{itemize}
+\underline{Wichtige Gr\"o\ss{}en an modernen Collidern}
+\begin{itemize}
+	\item Was ist die (integrierte) Luminosit\"at? Wie ist sie definiert?
+	\item Was versteht man unter dem Transversalimpuls $p_{T}$?
+	\item Wie ist die Pseudorapidit\"at $\eta$ definiert? Warum wird diese Gr\"o\ss{}e gegen\"uber dem Polarwinkel $\theta$ bevorzugt?
+	\item Was versteht man unter fehlender transversaler Energie und woher kommt sie?
+	\item Was versteht man unter dem sogenannten b-tagging?
+\end{itemize}
+\underline{Direkte Vorbereitung}
+\begin{itemize}
+\item Bearbeiten Sie die Aufgabe in Kapitel \ref{subsec:topreco_intro} (1.)
+\end{itemize}
+
+
+\section{Aufgaben}
+F\"ur die Durchf\"uhrung des Versuchs wird Ihnen ein Unix-Rechner zur Verf\"ugung gestellt. Sie loggen sich auf einem Gast-Konto ein. Die ben\"otigte Software befindet sich bereits auf dem Rechner. \"Offnen Sie eine Konsole und erstellen Sie sich einen Ordner, z.B.:
+\begin{lstlisting}
+mkdir mydir
+cd mydir
+\end{lstlisting}
+In diesem Ordner f\"uhren Sie den Versuch durch und speichern alle Ergebnisse.
+%Hinweis: Sie loggen sich mit einem Gast-Konto ein. Bringen Sie bitte au\ss{}erdem f\"ur Ihre Auswertung einen USB-Stick mit, um Ihre Ergebnisse zu sichern. Die zur Verf\"ugung gestellten Rechner arbeiten im Offline-Betrieb.
+\subsection{Event Displays mit der Fireworks-Software}
+Die Fireworks-Software wird zur graphischen Darstellung von Ereignissen im Detektor verwendet. Kopieren Sie sich die Software wie folgt in Ihren Ordner:
+\begin{lstlisting}
+cp -r /opt/fp/cmsShow-8.1 .
+cp -r /opt/fp/sources .
+\end{lstlisting}
+Sie betrachten im Folgenden ein Sample mit 400 simulierten $t\bar{t}$-Ereignissen. \"Offnen Sie das $t\bar{t}$-Sample wie folgt:
+\begin{lstlisting}
+cd cmsShow-8.1
+./cmsShow ../sources/ttbar.root
+\end{lstlisting}
+Machen Sie sich nun mit der Software vertraut:
+\begin{itemize}
+\item betrachten Sie verschiedene Ereignisse
+\item machen Sie sich klar, welche Anzeigen welche Objekte darstellen
+\item betrachten Sie Ereignisse in der Rho-Z-Achse sowie im 3D-Tower.
+\end{itemize}
+Versuchen Sie nun jeweils ein Ereignis f\"ur den voll-hadronischen, semi-leptonen und di-leptonen Zerfallskanal zu klassifizieren. Benutzen Sie daraufhin die Filter-Funktion. Passen Sie diese so an, dass m\"oglichst ausschlie{\ss}lich $t\bar{t}$-Ereignisse im semi-leptonischen Zerfallskanal betrachtet werden. Speichern Sie (mindestens) ein Event-Display f\"ur Ihre Auswertung!\\
+\\
+Betrachten Sie nun Event-Displays aus einem Single-Top-Sample:
+\begin{lstlisting}
+./cmsShow ../sources/singletop.root
+\end{lstlisting}
+K\"onnen Sie Unterschiede feststellen, die Ihnen bei der Selektion von $t\bar{t}$-Ereignissen helfen? Speichern Sie f\"ur Ihre Auswertung ein Event-Display mit einem Single-Top-Ereignis.
+
+\subsection{Einf\"uhrung in das Analyse-Framework}
+Unser Analyse-Framework ist bereits voll funktionsf\"ahig, jedoch macht es bislang nicht viel. Setzen Sie das Analyse-Framework auf und f\"uhren Sie es ein erstes Mal aus:
+\begin{itemize}
+	%\item erstellen Sie zun\"achst im Home-Verzeichnis einen neuen Ordner
+	\item entpacken Sie dazu das Paket TopWQS.tar.gz mit 'tar -xf sources/TopWQS.tar.gz' in Ihren Ordner
+	\item kompilieren Sie mit 'make'. Das Kompilieren erstellt Ihnen eine ausf\"uhrbare Datei \textbf{example.x}
+	\item nun kann das Framework ausgef\"uhrt werden mit './example.x'
+\end{itemize}
+Das Programm schreibt bereits Output-Dateien (wie z.B. \textbf{nocuts.pdf}), die Verteilungen der Analyse beinhalten. \"Offnen Sie die Dateien mit einem PDF-Viewer, wie z.B. \textbf{xpdf/okular}. Im Folgenden arbeiten Sie haupts\"achlich in den Dateien 'MyAnalysis.C', 'MyAnalysis.h' und 'example.C'. \"Offnen Sie diese mit einem Editor, z.B. Emacs, mit 'emacs MyAnalysis.C'. Machen Sie sich zu Beginn mit dem Code vertraut.
+
+\subsection{Aufgabe 1: Eigenschaften von Top-Quark-Ereignissen}
+In der Datei \textbf{nocuts.pdf} finden Sie verschiedene Verteilungen, wie z.B. die Anzahl der Myonen, Muon $p_{T}$, Anzahl der Jets, etc. in einem Ereignis. \\
+\subsubsection{Aufgabe 1.1:}
+\begin{itemize}
+  \item Betrachten Sie die bereitgestellten Histogramme und machen Sie sich mit ihnen vertraut.
+  \item Finden Sie heraus, wie viele Ereignisse in den Daten mehr als ein isoliertes und rekonstruiertes Myon haben. Aus welchen Prozessen stammen diese zus\"atzlichen Myonen? Betrachten Sie dazu die jeweiligen Monte-Carlo-Samples.
+\end{itemize}
+\subsubsection{Aufgabe 1.2}
+In diesem Aufgabenteil beginnen wir mit den ersten Schritten hinsichtlich einer realen Messung mit Top-Quark-Ereignissen. Dazu m\"ussen wir verstehen, wie man Top-Quark-Ereignisse effizient selektiert und gleichzeitig den Anteil von Ereignissen ohne Top-Quarks (sogenannte Untergrund-Ereignisse) reduziert.
+\begin{itemize}
+        \item Fordern Sie von nun an f\"ur alle Verteilungen mindestens ein isoliertes Myon.
+	\item Versuchen Sie Variablen zu finden, die besonders sensitiv sind um zwischen Signal und Untergrund zu unterscheiden. Geeignete Variablen k\"onnten z.B. die Anzahl von Jets, der Transversalimpuls des 1., 2., 3. Jets, der Transversalimpuls von Myonen, fehlende transversale Energie, die Anzahl von b-Jets (b-tagging), der Transversalimpuls des 1., 2. b-Jets sowie Winkelverteilungen ($\eta$) von (b-)Jets und Myonen sein. \\
+	 Vergleichen Sie daf\"ur in den Histogrammen Signal mit Untergrund!
+	\item Wenden Sie Schnitte auf verschiedene Variablen an um das Verh\"altnis aus Signal zu Untergrund zu verbessern. Wie viele Signal-Ereignisse verlieren Sie durch die Anwendung ihrer Selektion (Signal-Effizienz) und wie viele Ereignisse aus Untergrund-Prozessen? Welcher Untergrund ist besonders unangenehm? Lassen Sie sich sowohl die Effizienzen, als auch die Reinheit nach jedem Schnitt anzeigen. (Hinweis: f\"ugen Sie eine Variable, z.B. einen \textbf{float}, ein, die der Anzahl ihrer selektierten Ereignisse entspricht. Addieren Sie dazu das \textbf{Event\-Weight} auf Ihre eingef\"uhrte Variable nach der vollen Selektion f\"ur jedes Ereignis mit dem \grqq{}+=\grqq{} Operator.)
+        \item Es empfiehlt sich iterativ vorzugehen, d.h. Sie wenden z.B. einen Schnitt auf mindestens 2 Jets an und \"uberpr\"ufen, was dieser Schnitt f\"ur Folgen hat, indem Sie sich wieder alle Verteilungen, sowie Reinheit und Effizienz ansehen. Dann wenden Sie sich der n\"achsten Variable (bzw. dem n\"achsten Schnitt) zu und verfahren genauso. Speichern Sie die Histogramme vor und nach den Schnitten. \\
+\end{itemize}
+
+\subsection{Aufgabe 2: Messung des Wirkungsquerschnitts}
+Ziel dieser Aufgabe ist die Berechnung des Wirkungsquerschnitts der Top-Antitop-Quark-Produktion am LHC. Die ben\"otigten Gr\"o\ss{}en bestimmen Sie dazu Schritt f\"ur Schritt:
+\begin{itemize}
+	\item F\"ur die Berechung des Wirkungsquerschnitts ben\"otigen Sie die Akzeptanz (Signaleffizienz) $\epsilon$. Die Akzeptanz beinhaltet die Tatsache, dass wir uns auf den semileptonischen Zerfalls\-kanal mit einem Myon im Endzustand beschr\"anken. Dieses Verzweigungsverh"altnis ist bekannt und kann aus der Simulation genommen werden. Dar\"uber hinaus beinhaltet die Akzeptanz alle Selektions-Schnitte, die Sie in Aufgabe 2 eingef\"uhrt haben. \\Sie berechnen die Akzeptanz aus dem Verh\"altnis der Anzahl selektierter Top-Quark-Ereignisse (nach allen Schnitten) und der Anzahl aller generierten Top-Quark-Er\-eig\-nisse.
+	\item Der Wirkungsquerschnitt wird mit Hilfe echter Daten berechnet. Allerdings beinhalten die Daten, auch nach Anwendung Ihrer Selektion, noch Untergrund-Ereignisse, die zur Berechnung des Wirkungsquerschnitts nicht mitgez\"ahlt werden d\"urfen. Wir vertrauen der Simulation insofern, als dass sie die korrekte Anzahl von Untergrund-Ereignissen nach der Selektion vorhersagt. Bestimmen Sie die Anzahl an Top-Antitop-Quark-Ereignissen in den Daten, indem Sie die erwartete Anzahl von Untergrund-Ereignissen von den Daten-Ereignissen subtrahieren.
+	\item Nun k\"onnen Sie den Wirkungsquerschnitt mit folgender Formel bestimmen: $\sigma_{t\bar{t}} = \frac{N^{data} - N^{bg}}{\epsilon \cdot L}$. Geben Sie einen Fehler auf Ihre Messung an! (Hinweis: Nehmen Sie f\"ur die Luminosit\"at einen Fehler von 5\% an)
+        \item Durch die Anwendung von Jet Energie Korrekturen (JEC) ist es zudem notwendig, einen systematischen Fehler zu bestimmen. Wiederholen Sie dazu die Berechnung des Wirkungsquerschnitts und variieren Sie dabei die Jet Energie Korrekturen (up/down). 
+	\item Vergleichen Sie ihr Resultat mit einem offiziellen Ergebnis von ATLAS oder CMS (z.B. \url{http://arxiv.org/pdf/1108.3773.pdf})
+\end{itemize}
+
+\subsection{Aufgabe 3: Rekonstruktion der Top Quark Masse}
+\label{topreco}
+
+Im letzten Teil des Versuches werden Sie die Top-Quark-Masse rekonstruieren. Hierf"ur werden, wie auch schon im vorherigen Teil, Top-Antitop-Ereinisse verwendet. Zun"achst wird Ihnen hier die Methode vorgestellt, im Anschluss legen Sie selbst Hand an und optimieren eine bereits in Grundz"ugen vorhandene Rekonstruktion.
+
+\subsubsection{Methode zur Rekonstruktion}
+\label{subsec:topreco_intro}
+
+Um die Top-Quark-Masse zu rekonstruieren, werden wir, wie gehabt, Ereignisse mit zwei Top Quarks verwenden. Dabei nehmen wir an, dass dieses System von Top Quarks semi-leptonisch zerf"allt und ein Myon und fehlende transversale Energie (hervorgerufen durch das nicht-detektierte Neutrino) sowie Jets im Endzustand hervorruft. Das System aus beiden Top Quarks soll rekonstruiert und der Mittelwert beider rekonstruierter Top-Quark-Massen verwendet werden. Die Rekonstruktion verl"auft in drei Schritten, die im Folgenden erl"autert werden.
+
+\begin{enumerate}
+\item \textbf{Rekonstruktion des Neutrinos:} Unter der Annahme, dass das Neutrino die einzige Quelle fehlender transversaler Energie ist, und dass Myon und Neutrino von einem realen W-Boson erzeugt wurden, kann eine Formel f"ur die z-Komponente des Neutrino-Viererimpulses gefunden werden. Die transversalen Komponenten erh"alt man direkt aus der Messung der fehlenden Transversalenergie und die Masse verschwindet im Standardmodell. 
+
+\textbf{Aufgabe:} Machen Sie sich klar, dass aus der Annahme von 
+
+\begin{equation}
+\left(P_{\text{W}}\right)^2 = \left(P_{\mu} + P_{\nu}\right)^2,
+\end{equation}
+
+\noindent wobei $P$ den Viererimpuls eines gegebenen Teilches darstellt, und 
+
+\begin{equation}
+E_{\text{T}}^{\text{miss}} = p_{\text{T, }\nu},
+\end{equation}
+
+\noindent wobei $E_{\text{T}}^{\text{miss}}$ die fehlende Transversalenergie bezeichnet, die z-Komponente des Neutrino-Viererimpulses gegeben ist durch: 
+
+\begin{equation}
+p_{z,\nu}^\pm = \frac{\mu\,p_{z,\mu}}{p_{\text{T},\mu}^2} \pm \sqrt{\frac{\mu^2p_{z,\mu}^2}{p_{\text{T},\mu}^4}-\frac{E_\mu^2\,p_{\text{T},\nu}^2-\mu^2}{p_{\text{T},\mu}^2}},
+\end{equation}
+
+\noindent wobei $\mu = M_W^2 / 2 + p_{\text{T},\mu}\,p_{\text{T},\nu}\,\text{cos}\Delta\phi$ und $p_{\mu}$ und $p_{\nu}$ die Dreierimpulse von Muon und Neutrino kennzeichnet.
+
+Diese Gleichung kann 0, 1 oder 2 reelle L"osungen haben. Falls keine reelle L"osung existiert, wird stattdessen der Realteil der komplexen verwendet. Im Falle von 2 L"osungen wird das im Folgenden beschriebene Procedere f"ur jede L"osung wiederholt.
+
+Damit ist der gesamte Viererimpuls des Neutrinos rekonstruiert und wir fahren mit dem zweiten Schritt fort:
+
+\item \textbf{Rekonstruktion des Top-Antitop-Quark Systems:} Wir nehmen an, dass die Quarks aus dem Top Quark Zerfall (ein b-Quark aus dem leptonischen, drei Quarks, wovon eines ein b-Quark ist, aus dem hadronischen Top Quark) als Jets von Detektor registriert werden. Die einfachste Annahme w"are also, dass wir die ''richtigen'' vier Jets finden m"uessen, um alle Teilchen beider Zerf"alle zu identifizieren. 
+
+Es kann jedoch vorkommen, dass zwei Quarks in einer sehr "ahnlichen Richtung produziert werden und deshalb auch nur als ein einziger Jet im Detektor gemessen werden. Ebenso kann (z.B. durch Gluon-Abstahlung im Endzustand) ein zus"atzlicher Jet produziert werden, der f"ur die Rekonstruktion der beiden Top Quarks ber"ucksichtigt werden muss. Wir betrachten also alle F"alle, in denen die Top Quarks aus mindestens 3, h"ochstens jedoch 5 Jets rekonstruiert werden k"onnen. Der Einfachheit halber nehmen wir an, dass immer ein Jet vom leptonischen Top Quark erzeugt wird und zwei bis vier vom hadronischen. 
+
+Nun zur eigentlichen Arbeit: Das Ereignis habe $N$ Jets. Dann werden $N$ leptonische Top Quark Kandidaten  gebildet, jeweils aus dem Viererimpuls des Muons, des Neutinos und eines Jets:
+
+\begin{equation}
+P_{\text{t}}^{\text{lep}} = P_{\mu} + P_{\nu} + P_{\text{jet}}.
+\end{equation}
+
+F"ur jeden leptonischen Kandidaten verbleiben $N-1$ Jets, die f"ur das hadronische Top Quark zur Verf"ugung stehen. Wie oben diskutiert werden daraus alle m"oglichen Permutationen von 3, 4 oder 5 Jets gebildet und zum hadronischen Top Quark Kandidaten erkl"art:
+
+\begin{equation}
+P_{\text{t}}^{\text{had}} = \sum_{\text{i}} P_{\text{jet, i}},
+\end{equation}
+
+\noindent wobei die Summe "uber alle Jets in der betrachteten Permutation l"auft. F"ur jeden leptonischen Kandidaten wird also eine Vielzahl hadronischer Kandidaten gebildet.  
+
+Au"serdem machen wir uns das Vorkommen von Jets mit b-Tag zunutze. Wenn mindestens ein Jet als b-Jet identifieziert wurde, muss er f"ur eines von beiden Top Quarks verwendet werden. Sollten mindestens zwei b-Jets vorhanden sein, muss jedes Top Quark einen enthalten. Alle Kandidatenpaare, die diese Bedingung nicht erf"ullen, werden verworfen. Im letzten Schritt wird aus allen verbliebenen Kandidatenpaaren das beste ausgew"ahlt.
+
+\item \textbf{Auswahl des besten Paares:} Wir w"ahlen das Paar als unsere finalen rekonstruierten Top Quarks aus, bei dem die Differenz der rekonstruierten Massen minimal ist - wie es bei einem tats"achlichen Paar von Top Quarks der Fall sein sollte. Falls die Massendifferenz 10\,GeV "ubersteigt, wird die Paarung verworfen. Die rekonstruierte Top Quark Masse ergibt sich aus dem arithmetischen Mittel der beiden individuellen rekonstruierten Massen:
+
+\begin{equation}
+M_{\text{t}}^{\text{rec}} = \frac{M_{\text{t}}^{\text{lep}} + M_{\text{t}}^{\text{had}}}{2}.
+\label{eq:mtoprec}
+\end{equation}
+
+
+\end{enumerate}
+
+\subsubsection{Messung der rekonstruierten Top Quark Masse}
+Nun sollen Sie die obigen Schritte in der Praxis anwenden und optimieren. Die Analysesoftware enth"alt bereits alle n"otigen Funktionen, um die Schritte 1 - 3 aus dem vorigen Kapitel durchzuf"uhren. 
+
+\begin{itemize}
+\item Verifizieren Sie, dass die Funktionen MyAnalysis::ReconstructTTbar und MyAnalysis::SelectBestTTbarHypothesis die Schritte 1-2 und 3 repr"asentieren und verstehen Sie den Aufbau der Funktionen. 
+
+\item Fordern Sie in einer neuen Selektion mindestens 3 Jets in jeden Ereignis. Setzen Sie die Variable ''m\_top\_avg'' gem"a"s der in Gleichung \ref{eq:mtoprec} gegebenen Definition. Falls Sie Erfolg haben, wird das letzte Histogramm in der Liste nun mit dieser Variable gef"ullt werden.
+
+\item Optimiern Sie diese Selektion, bei der Sie gr"o"stenteils Top-Antitop-Ereignisse selektieren, ohne unn"otig viele Ereignisse zu verwerfen. \textit{Hinweis: Sie sollten nicht mehr als eine oder zwei andere Variablen (zus"atzlich zur Anzahl an Jets) verwenden. "Uberlegen Sie, welche Variablen f"ur die im vorigen Kapitel beschriebene Rekonstruktion hilfreich war!}
+
+\item Modifizieren Sie die Art der Rekonstruktion, indem Sie die Mindestzahl der im hadronischen Top Quark verwendeten Jets variieren (ganzzahlige Werte zwischen 2 und 4). Hierf"ur k"onnen sie das Argument der Funktion MyAnalysis::ReconstructTTbar verwenden, das im Moment auf 3 eingestellt ist. Bei welcher Mindestanzahl erscheint der Peak bei der Top Quark Masse am sch"arfsten? Was k"onnte Grund daf"ur sein?
+
+\item \textbf{BONUS:} Sie k"onnen ebenso die maximal zul"assige Massendifferenz zwischen hadronischer und leptonischer rekonstruierter Top Quark Masse variieren. Finden Sie heraus, wie, und probieren Sie unterschiedliche Werte aus! Was beobachten Sie? K"onnen Sie einen besseren Wert als 10\,GeV finden?
+
+\item Legen Sie sich auf eine Kombination aus Selektion und Mindestanzahl an Jets fest, die Sie im Folgenden verwenden. Erl"autern Sie Ihre Wahl
+
+\end{itemize}
+
+Ihr gemessener Wert der Top Quark Masse wird in diesem Versuch ermittelt, indem eine Gau"skurve an die Verteilung der rekonstruierten Top Quark Masse gefittet wird. Der Mittelwert der Kurve entspricht der Masse, die Unsicherheit auf den Mittelwert entspricht der statistischen Unsicherheit Ihrer Messung. Wie auch bei der Messung des Wirkungsquerschnitts betrachten wir die Unsicherheit auf JEC als systematische Unsicherheit. 
+
+F"ur die Messung wird die Verteilung in Daten abz"uglich der Untergr"unde verwendet. Dies wurde bereits f"ur Sie implementiert.
+
+\begin{itemize}
+\item Modifizieren Sie den Code in der Datei example.C und aktivieren Sie den Fit! Experimentieren Sie mit der oberen und unteren Grenze des Fits, beachten Sie jedoch, dass stets nur der zentrale Teil der Verteilung gefittet werden sollte.
+
+\item Ermitteln Sie den Wert und die statistische Unsicherheit der mit Ihrer Selektion und Methode (s.o.) ermittelten rekonstruierten Top Quark Masse.
+
+\item Wiederholen Sie die Selektion und den Fit f"ur eine variierte JEC (up, down). Die gr"o"sere Differenz von der im vorigen Schritt ermittelten Masse entspricht der systematischen Unsicherheit Ihrer Messung. 
+
+\item Vergleichen Sie Ihr Ergebnis mit einer offiziellen Messung der Top Quark Masse am LHC, z.B. dem ''World Average'': \url{https://arxiv.org/abs/1403.4427}!
+\end{itemize}

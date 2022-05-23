@@ -1,0 +1,51 @@
+\section{Datenformat und Struktur des ROOT tree}
+\label{dataformat}
+Die in Kapitel \ref{datasets} beschriebenen Samples sind in sogenannten \texttt{ROOT trees} gespeichert. Diese \texttt{trees} beinhalten eine Kollektion von Variablen, die pro Ereignis gef\"ullt sind. Die Liste der Variablen inklusive ihres Datentyps ist im Folgenden gegeben. Variablen mit Klammern \texttt{[]} bedeuten, dass sie als \texttt{Array} gespeichert sind.
+\begin{itemize}
+	\item \texttt{NJet} (integer): Anzahl von Jets im Ereignis.
+	\item \texttt{Jet\_Px[NJet]} (float): x-Komponente von Jet-Impulsen. Es handelt sich hierbei um ein Array der Gr\"o\ss{}e \texttt{NJet}, wobei maximal 20 Jets gespeichert werden. Sofern es mehr als 20 Jets in einem Ereignis gibt, werden nur die 20 Jets mit der gr\"o\ss{}ten Energie gespeichert. Des weiteren werden ausschlie\ss{}lich Jets mit $p_{T}>30$ GeV gespeichert.
+	\item \texttt{Jet\_Py[NJet]} (float): y-Komponente von Jet-Impulsen.
+	\item \texttt{Jet\_Pz[NJet]} (float): z-Komponente von Jet-Impulsen.
+	\item \texttt{Jet\_E[NJet]} (float): Energie des Jets. Hinweis: die Komponenten \texttt{Jet\_Px[NJet]}, \texttt{Jet\_Py[NJet]}, \texttt{Jet\_Pz[NJet]} und \texttt{Jet\_E[NJet]} bilden den Vierervektor des Jets und beschreiben damit vollst\"andig die Kinematik eines Jets.
+	\item \texttt{Jet\_btag[NJet]} (float): b-tagging Diskriminator. Diese Gr\"o\ss{}e erh\"alt man aus einem Algorithmus, welcher Zerf\"alle von B-Hadronen identifiziert. Gr\"o\ss{}ere Werte weisen auf eine h\"ohere Wahrscheinlichkeit hin, dass das Jet aus einem b-Quark stammt.
+	\item \texttt{Jet\_ID[NJet]} (bool): dient zur Unterscheidung von echten Jets (aus hadronischen Wechselwirkungen) und Detektor-St\"orsignalen. Ein $guter$ Jet hat \texttt{true} als Wert.
+	\item \texttt{NMuon} (integer): Anzahl der Myonen im Ereignis.
+	\item \texttt{Muon\_Px[NMuon]} (float): x-Komponente von Myon-Impulsen.
+	\item \texttt{Muon\_Py[NMuon]} (float): y-Komponente von Myon-Impulsen.
+	\item \texttt{Muon\_Pz[NMuon]} (float): z-Komponente von Myon-Impulsen.
+	\item \texttt{Muon\_E} (float): Energie des Myons.
+	\item \texttt{Muon\_Charge} (integer): Ladung des Myons. Diese wird aus der Kr\"ummung im Magnetfeld bestimmt und hat die Werte +1 oder -1.
+	\item \texttt{Muon\_Iso[NMuon]} (float): Myon-Isolation. Diese Variable ist ein Ma\ss{} f\"ur die Menge an Detektor-Aktivit\"at in der N\"ahe des Myons. So haben z.B. Myonen innerhalb von Jets einen gro\ss{}en Wert f\"ur \texttt{Muon\_Iso}. Myonen, die aus W-Zerf\"allen stammen, haben typischerweise kleine Werte f\"ur \texttt{Muon\_Iso}.
+	\item \texttt{NElectron} (integer): s. Beschreibung der Myonen
+	\item \texttt{Electron\_Px[NElectron]} (float): s. Beschreibung der Myonen
+	\item \texttt{Electron\_Py[NElectron]} (float): s. Beschreibung der Myonen
+	\item \texttt{Electron\_Pz[NElectron]} (float): s. Beschreibung der Myonen
+	\item \texttt{Electron\_E} (float): s. Beschreibung der Myonen
+	\item \texttt{Electron\_Charge} (integer): s. Beschreibung der Myonen
+	\item \texttt{Electron\_Iso[NElectron]} (float): s. Beschreibung der Myonen
+	\item \texttt{NPhoton} (integer): s. Beschreibung der Myonen
+	\item \texttt{Photon\_Px[NPhoton]} (float): s. Beschreibung der Myonen
+	\item \texttt{Photon\_Py[NPhoton]} (float): s. Beschreibung der Myonen
+	\item \texttt{Photon\_Pz[NPhoton]} (float): s. Beschreibung der Myonen
+	\item \texttt{Photon\_E} (float): s. Beschreibung der Myonen
+	\item \texttt{Photon\_Iso[NPhoton]} (float): s. Beschreibung der Myonen
+	\item \texttt{MET\_px} (float): x-Komponente der fehlenden transversalen Energie. Objekte wie Neutrinos, die den Detektor entgehen, verursachen fehlende transversale Energie, welche gemessen und mit dem Neutrino assoziiert werden kann.
+	\item \texttt{MET\_py} (float): y-Komponente der fehlenden transversalen Energie.
+	\item \texttt{NPrimaryVertices} (integer): Anzahl der Vertizes von Proton-Proton-Interaktionen. Aufgrund der hohen Luminosit\"at am LHC k\"onnen mehrere Protonen innerhalb eines Teilchenb\"undels kollidieren. Dieses wird typischerweise als \texttt{pile-up} bezeichnet.
+	\item \texttt{triggerIsoMu24} (bool): Trigger \texttt{bit}. Sofern ein Ereignis getriggert wurde ist dieser Wert \texttt{true}, andernfalls \texttt{false}. 
+\end{itemize}
+Alle oben beschriebenen Gr\"o\ss{}en werden mit dem Detektor gemessen und sind sowohl f\"ur echte Daten als auch f\"ur Monte-Carlo-Simulationen verf\"ugbar. 
+
+
+\section{Analyse-Framework}
+\label{framework}
+Das Paket TopWQS.tar.gz enth\"alt eine (unvollst\"andige) Analyse-Software, auf dessen Basis Sie Ihre Versuchsdurchf\"uhrung beginnen werden. Eine Beschreibung der individuellen Komponenten der Analyse-Software ist in der folgenden Liste zu finden. Dort sind ebenso Hinweise, wie Sie beginnen sollten den Code zu erweitern.
+\begin{itemize}
+	\item \textbf{example.C}: Diese Datei ist ihr Startpunkt. Es beinhaltet die \texttt{main()} Funktion, welche f\"ur jedes C\texttt{++} Programm unabdingbar ist. Dar\"uber hinaus finden Sie hier Instanzen aus \texttt{MyAnalysis}, die in den Dateien \texttt{MyAnalysis.h} und \texttt{MyAnalysis.C} implementiert sind. Das \texttt{TChain} repr\"asentiert den \texttt{ROOT tree} (s. Kapitel \ref{dataformat}). Die Dateien, die gelesen werden, sind in der Funktion \texttt{Add(filename)} spezifiziert. Der \texttt{tree} wird mit der \texttt{Process()} Funktion gelesen und prozessiert, indem es ein Argument aus \texttt{MyAnalysis} benutzt. Folglich findet der Gro\ss{}teil Ihrer Arbeit in der \texttt{Process()} Funktion aus der \texttt{MyAnalysis} Klasse statt.
+	\item \textbf{MyAnalysis.h}: Definition der Klasse \texttt{MyAnalysis}, welcher aus \texttt{ROOT TSelector} erbt. Der Konstruktor verwendet einen globalen Skalierungsfaktor (welcher standardm\"a\ss{}ig auf 1,0 gesetzt ist), der auf alle Ereignisse in den jeweiligen Samples angewendet wird. Dieser Skalierungsfaktor wird benutzt um die MC-Prozesse (ent\-sprech\-end der Anzahl der simulierten Ereignisse und ihres Wirkungsquerschnitts) zu normieren. \texttt{MyAnalysis} beinhaltet die Deklaration aller Variablen, die im ROOT tree gespeichert sind. Dar\"uber hinaus werden hier Variablen und Funktionen deklariert, die Sie in Ihrer Analyse benutzen werden (z.B. deklarieren Sie hier Ihre Histogramme). 
+	\item \textbf{MyAnalysis.C}: die beiden main-Funktionen, die automatisch aufgerufen werden w\"ahrend der ROOT tree prozessiert wird, sind \texttt{SlaveBegin()} und \texttt{Process()}. Die \texttt{SlaveBegin()} Funktion wird einmal pro Job aufgerufen, direkt bevor die Ereignisse prozessiert werden. Es dient dazu Histogramme einzutragen. Die \texttt{Process()} Funktion wird automatisch f\"ur jedes einzelne Ereignis aufgerufen. Hier ist der Kern der Analyse implementiert. 
+	\item \textbf{MyMuon.h/MyMuon.C}: erbt von \texttt{TLorentzVector}, was grunds\"atzlich einem Vierervektor entspricht. Dar\"uber hinaus werden zus\"atzliche Informationen, wie die Ladung und Isolation des Myons dem Vierervektor hinzugef\"ugt.
+	\item \textbf{MyElectron.h/MyElectron.C}: s. \texttt{MyMuon}, entsprechend f\"ur Elektronen.
+	\item \textbf{MyJet.h/MyJet.C}: erbt von \texttt{TLorentzVector} und addiert Informationen zum Vierervektor \"uber die b-tagging-Variable. Die b-tagging-Variable is korreliert mit der Wahrscheinlichkeit, dass das Jet aus einem b-Quark stammt. Gro\ss{}e Werte dieser Variable sind gleichbedeutend mit einer gro\ss{}en Wahrscheinlichkeit, dass es sich um ein b-Quark-Jet handelt. Die Funktion \texttt{IsBTagged()} schneidet auf den b-tag Diskriminator und gibt einen \texttt{boolean} wieder (\texttt{true} oder \texttt{false}). Die Funktion \texttt{GetJetID()} gibt \texttt{true} wieder, sofern ein Jet ausreichend Kriterien erf\"ullt, andernfalls wird \texttt{false} wieder gegeben.
+	\item \textbf{Plotter.h/Plotter.C}: Mit diesem Tool k\"onnen mehrere Histogramme, die als \texttt{std::vector} gespeichert sind, graphisch dargestellt werden.
+\end{itemize}

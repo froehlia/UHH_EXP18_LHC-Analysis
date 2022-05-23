@@ -1,0 +1,95 @@
+\documentclass[12pt,twoside,a4paper]{article}
+\usepackage{listings}
+\begin{document}
+\section{Hello world}
+\"Offnen Sie eine Konsole auf dem Linux-Rechner. \"Offnen Sie nun mit einem Editor Ihrer Wahl ein Dokument mit dem Namen 'helloworld.cc', z.B. mit:
+ \begin{lstlisting}
+emacs helloworld.cc
+ \end{lstlisting}
+Implementieren Sie den folgenden Code:
+\begin{lstlisting}
+#include<iostream>
+
+int main()
+{
+  std::cout << "Hello world!" << std::endl;
+}
+\end{lstlisting}
+Kompilieren Sie das Programm mit:
+\begin{lstlisting}
+g++ helloworld.cc -o helloworld
+\end{lstlisting}
+Durch diesen Befehl wird eine ausf\"uhrbare Datei mit dem Namen 'helloworld' erstellt. F\"uhren Sie diese Datei aus:
+\begin{lstlisting}
+./helloworld
+\end{lstlisting}
+
+\section{Funktionen}
+F\"ugen Sie Ihrem Programm nun eine Funktion hinzu:
+\begin{lstlisting}
+#include<iostream>
+
+void PrintHello()
+{
+  std::cout << "Hello world!" << std::endl;
+}
+
+int main()
+{
+  PrintHello();
+}
+\end{lstlisting}
+Kompilieren Sie erneut und f\"uhren Sie das Programm aus.\\
+Sofern eine Funktion einen Wert ausgeben soll muss die \textit{void}-Anweisung mit dem Typ \textbf{return} ersetzt werden, z.B. \textbf{int} oder \textbf{double}. In diesem Fall muss sichergestellt werden, dass die Funktion eine Anweisung \textbf{return x} besitzt. Im Folgenden finden Sie eine Funktion, die zwei Integers addiers:
+\begin{lstlisting}
+int sum(int a, int b)
+{
+  int result = a + b;
+  return result;
+}
+\end{lstlisting}
+Implementieren Sie diese Funktion in Ihr Programm und lassen Sie sich das Ergebnis ausgeben.
+
+\section{For-Schleifen}
+Erweitern Sie Ihre PrintHello()-Funktion wie folgt:
+\begin{lstlisting}
+void PrintHello(int n)
+{
+  for(int i=1; i<n; i++)
+    {
+      std::cout << i << " Hello world!" << std::endl;
+    }
+}
+\end{lstlisting}
+Die Ausgabe "Hello world!" wird nun n-1 Mal wiederholt. Durch die Ausgabe des Index i sehen Sie die Anzahl der Wiederholungen. F\"uhren Sie die Funktion so aus, dass "Hello world!" zehn Mal ausgeben wird.
+
+\section{if-Bedingungen}
+Eine if-Bedingung erlaubt Ihnen innerhalb Ihres Codes zu kontrollieren, ob das Programm einen Abschnitt des Codes betritt oder nicht -- je nachdem, ob die Bedingung erf\"ullt (\textbf{true}) ist oder nicht (\textbf{false}). Die Syntax sieht wie folgt aus:
+\begin{lstlisting}
+if(Bedingung){
+  .. code ..
+} else if(eine andere Bedingung){
+  .. weiterer Code ..
+} else{
+  .. code, der nur ausgefuehrt wird, wenn die vorherigen 
+  Bedingungen false sind ..
+}
+\end{lstlisting}
+Im Folgenden sind Beispiele mit verschiedenen Operatoren:
+\begin{lstlisting}
+if(x>a) ...groesser als
+if(x<a) ...kleiner als
+if(x>=a) ...groesser gleich als
+if(x<=a) ...kleiner gleich als
+if(x==a) ...ist gleich
+if(x!=a) ...ist nicht gleich
+\end{lstlisting}
+Implementieren Sie in Ihrem Programm einen Integer, der dem Ergebnis Ihrer sum()-Funktion entspricht. Fragen Sie daraufhin ab, ob das Ergebnis gr\"o{\ss}er als 10 oder kleiner gleich 10 ist:
+\begin{lstlisting}
+int output = sum(a,b); // replace a and b with values of your choice
+if(output>10) std::cout << "The sesult is greater than 10" << std::endl;
+else{ std::cout << "The result is less than 10 or equal 10" << std::endl;}
+\end{lstlisting}
+
+
+\end{document}

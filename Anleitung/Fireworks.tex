@@ -1,0 +1,38 @@
+\documentclass[12pt,twoside,a4paper]{article}
+\usepackage{listings}
+\begin{document}
+
+\section*{Event Displays mit Fireworks}
+Installieren Sie Fireworks und \"offnen Sie anschlie{\ss}end das $t\bar{t}$-Sample:
+\begin{lstlisting}
+wget http://cern.ch/cmsshow/cmsShow-8.0-2.linux.tar.gz
+tar xzf cmsShow-8.0-2.linux.tar.gz
+cd cmsShow-8.0-2
+wget https://www.desy.de/~mstoev/teaching/Top_WQS/ttbar.root
+./cmsShow ttbar.root
+\end{lstlisting}
+Das Sample beinhaltet 400 simulierte $t\bar{t}$-Ereignisse. Machen Sie sich mit der Software vertraut:
+\begin{itemize}
+\item betrachten Sie verschiedene Ereignisse
+\item betrachten Sie lediglich Jets, Myonen sowie Elektronen
+\item betrachten Sie Ereignisse in der Rho-Z-Achse sowie im 3D-Tower.
+\end{itemize}
+Versuchen Sie nun jeweils ein Ereignis f\"ur den voll-hadronischen, semi-leptonen und di-leptonen Zerfallskanal zu finden. Benutzen Sie daraufhin die Filter-Funktion. Passen Sie diese so an, dass m\"oglichst ausschlie{\ss}lich $t\bar{t}$-Ereignisse im semi-leptonischen Zerfallskanal betrachtet werden. Speichern Sie (mindestens) ein Event-Display f\"ur Ihre Auswertung!\\
+\\
+Betrachten Sie nun Event-Displays aus einem Single-Top-Sample:
+\begin{lstlisting}
+wget https://www.desy.de/~mstoev/teaching/Top_WQS/singletop.root
+./cmsShow wjets.root
+\end{lstlisting}
+K\"onnen Sie Unterschiede feststellen, die Ihnen bei der Selektion von $t\bar{t}$-Ereignissen helfen?\\
+\\
+Speichern Sie f\"ur Ihre Auswertung ein Event-Display mit einem Single-Top-Ereignis. 
+
+%\section{Hello world}
+%\"Offnen Sie eine Konsole auf dem Linux-Rechner. \"Offnen Sie nun mit einem Editor Ihrer Wahl ein Dokument mit dem Namen 'helloworld.cc', z.B. mit:
+% \begin{lstlisting}
+%emacs helloworld.cc
+% \end{lstlisting}
+
+
+\end{document}

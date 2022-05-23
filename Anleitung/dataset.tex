@@ -1,0 +1,27 @@
+\section{Datensatz und Monte-Carlo-Simulation}
+\label{datasets}
+Die Kollisionsrate der Protonen ist am LHC extrem hoch, sodass nicht alle Ereignisse gespeichert werden k\"onnen. Ein Trigger-System selektiert deshalb interessante Ereignisse und reduziert damit die totale Rate an Ereignissen. Der Trigger, der f\"ur diese Analyse benutzt wurde selektiert Ereignisse, die isolierte Myonen mit einem Transversalimpuls von $p_{T}>24$ GeV beinhalten. Das Sample mit echten Daten, die mit dem CMS-Detektor und dem Trigger aufgenommen wurden, hat 469384 Ereignisse. Dieses entspricht einer integrierten Luminosit\"at von 50 pb$^{-1}$. Weitere Details sind in Tabelle \ref{table_samples} zu finden.\\
+Diese Tabelle beinhaltet dar\"uber hinaus Informationen \"uber die simulierten Samples. Die Anzahl der simulierten Ereignisse kann erheblich kleiner oder gr\"o\ss{}er sein als f\"ur 50 pb$^{-1}$ ben\"otigt, da die Ereignisse aus Simulationen entsprechend gewichtet werden k\"onnen. Dieses Gewicht ist als \textbf{EventWeight} - Variable in jedem simulierten Sample gespeichert. Damit die simulierten Samples jeweils einer integrierten Luminosit\"at von 50 pb$^{-1}$ entsprechen, m\"ussen alle Ereignisse mit ihrem \textbf{EventWeight} gewichtet (''multipliziert'') werden.
+\begin{small}
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{|l|c|c|c|}
+    \hline 
+Datei-Name & Prozess & $\#$Ereignisse & WQS \\ \hline\hline
+data.root & Daten & 469384 & \\ \hline
+ttbar.root & sim. $t\bar{t}$-Signal & 36941 & 165 pb  \\
+wjets.root & sim. W+Jets Untergrund & 109737 & 31300 pb \\
+dy.root & sim. Drell-Yan Untergrund & 77729 & 15800 pb \\
+ww.root & sim. WW Untergrund & 4580 & 43 pb \\
+wz.root & sim. WZ Untergrund & 3367 & 18 pb \\
+zz.root & sim. ZZ Untergrund & 2421 & 6 pb \\
+single\_top.root & sim. Single Top Untergrund & 5684 & 85 pb \\
+qcd.root & sim. QCD Multijet Untegrund & 142 & $10^8$ pb \\
+    \hline
+  \end{tabular}
+  \caption{Daten und simulierte MC-Samples.}
+  \label{table_samples}
+\end{table}
+\end{small}
+\\Wie Sie des Weiteren der Tabelle entnehmen k\"onnen, enth\"alt das QCD-Multijet-Sample nur noch sehr wenige getriggerte Ereignisse, obwohl der Produktions-Wirkungsquerschnitt f\"ur diesen Prozess sehr gro\ss{} ist. Dieser Untergrund wird bereits aufgrund des Triggers stark reduziert, da dort ein isoliertes Myons verlangt wird.\\
+Alle (ROOT-)Dateien sind in Unterordnern des HEPTutorial.tar.gz - Pakets zu finden.

@@ -1,0 +1,24 @@
+\select@language {ngerman}
+\contentsline {section}{\numberline {1}Einleitung}{5}{section.1}
+\contentsline {section}{\numberline {2}Theoretische Grundlagen}{7}{section.2}
+\contentsline {subsection}{\numberline {2.1}Das Standardmodell der Teilchenphysik}{7}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Physik des Top-Quarks}{9}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}Top-Quark-Produktion am LHC}{10}{subsubsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.2}Masse und Zerfall des Top-Quarks}{12}{subsubsection.2.2.2}
+\contentsline {section}{\numberline {3}Der LHC und das CMS-Experiment}{17}{section.3}
+\contentsline {subsection}{\numberline {3.1}Der Large Hadron Collider}{17}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Teilchen-Identifizierung im Detektor}{18}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Jets und Jet Energie Korrekturen}{21}{subsection.3.3}
+\contentsline {section}{\numberline {4}Datensatz und Monte-Carlo-Simulation}{23}{section.4}
+\contentsline {section}{\numberline {5}Vorbereitung (vor Praktikumsbeginn)}{25}{section.5}
+\contentsline {section}{\numberline {6}Aufgaben}{27}{section.6}
+\contentsline {subsection}{\numberline {6.1}Event Displays mit der Fireworks-Software}{27}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Einf\"uhrung in das Analyse-Framework}{27}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Aufgabe 1: Eigenschaften von Top-Quark-Ereignissen}{28}{subsection.6.3}
+\contentsline {subsubsection}{\numberline {6.3.1}Aufgabe 1.1:}{28}{subsubsection.6.3.1}
+\contentsline {subsubsection}{\numberline {6.3.2}Aufgabe 1.2}{28}{subsubsection.6.3.2}
+\contentsline {subsection}{\numberline {6.4}Aufgabe 2: Messung des Wirkungsquerschnitts}{29}{subsection.6.4}
+\contentsline {subsection}{\numberline {6.5}Aufgabe 3: Rekonstruktion der Top Quark Masse}{30}{subsection.6.5}
+\contentsline {subsubsection}{\numberline {6.5.1}Methode zur Rekonstruktion}{30}{subsubsection.6.5.1}
+\contentsline {subsubsection}{\numberline {6.5.2}Messung der rekonstruierten Top Quark Masse}{32}{subsubsection.6.5.2}
+\contentsline {section}{\numberline {7}Auswertung}{35}{section.7}

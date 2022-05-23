@@ -1,0 +1,134 @@
+\begin{thebibliography}{10}
+
+\bibitem{Griffiths}
+David~J Griffiths.
+\newblock {\em {Introduction to Elementary Particles}}.
+\newblock TextBook Physics. Wiley, New York, NY, 1987.
+
+\bibitem{Berger}
+C~Berger.
+\newblock {\em {Elementarteilchenphysik: von den Grundlagen zu den modernen
+  Experimenten; 2. Auflage}}.
+\newblock Springer, Berlin, 2005.
+
+\bibitem{pdg}
+Particle Data~Group Collaboration.
+\newblock {Review of Particle Physics, 2012-2013. Review of Particle
+  Properties}.
+\newblock {\em Phys. Rev. D}, 86(1):010001, 2012.
+
+\bibitem{ATLAS:2014wva}
+{First combination of Tevatron and LHC measurements of the top-quark mass}.
+\newblock 2014.
+
+\bibitem{Bernreuther}
+Werner Bernreuther.
+\newblock {Top quark physics at the LHC}.
+\newblock {\em J.Phys.}, G35:083001, 2008.
+
+\bibitem{Schilling}
+Frank-Peter Schilling.
+\newblock {Top Quark Physics at the LHC: A Review of the First Two Years}.
+\newblock {\em Int.J.Mod.Phys.}, A27:1230016, 2012.
+
+\bibitem{combinedhera}
+H1 and Zeus Collaboration.
+\newblock {PDF fits including HERA-II high $Q^{2}$ data (HERAPDF1.5)}.
+\newblock {\em H1prelim-10-142, ZEUS-prel-10-018}.
+
+\bibitem{Cacciari:2011hy}
+Matteo Cacciari, Michal Czakon, Michelangelo Mangano, Alexander Mitov, and
+  Paolo Nason.
+\newblock {Top-pair production at hadron colliders with next-to-next-to-leading
+  logarithmic soft-gluon resummation}.
+\newblock {\em Phys.Lett.}, B710:612--622, 2012.
+
+\bibitem{Czakon:2013goa}
+Michal Czakon, Paul Fiedler, and Alexander Mitov.
+\newblock {The total top quark pair production cross-section at hadron
+  colliders through O($\alpha_{S}^{4}$)}.
+\newblock {\em Phys.Rev.Lett.}, 110:252004, 2013.
+
+\bibitem{Kidonakis:1449411}
+Nikolaos Kidonakis.
+\newblock {Differential and total cross sections for top pair and single top
+  production}.
+\newblock pages 831--834, 2012.
+
+\bibitem{prodcrosssectionatlascms}
+\url{https://twiki.cern.ch/twiki/bin/view/CMSPublic/PhysicsResultsTOPSummaryPlots}.
+
+\bibitem{Lancaster:2011wr}
+CDF and D0~Collaboration.
+\newblock {Combination of CDF and D0 results on the mass of the top quark using
+  up to 5.8~fb-1 of data}.
+\newblock 2011.
+
+\bibitem{Jezabek:1988iv}
+M.~Jezabek and Johann~H. Kuhn.
+\newblock {QCD Corrections to Semileptonic Decays of Heavy Quarks}.
+\newblock {\em Nucl.Phys.}, B314:1, 1989.
+
+\bibitem{LHC}
+Lyndon Evans and Philip Bryant.
+\newblock {LHC Machine}.
+\newblock {\em JINST}, 3:S08001, 2008.
+
+\bibitem{Kleinknecht:1984jt}
+K.~Kleinknecht.
+\newblock {\em {DETECTORS FOR PARTICLE RADIATION. (IN GERMAN)}}.
+\newblock 1984.
+
+\bibitem{Grupen:PD}
+C.~Grupen.
+\newblock {\em {Particle Detectors}}.
+\newblock 1996.
+
+\bibitem{duoplasma}
+{The CERN Hadron Ion Sources}.
+\newblock http://linac2.home.cern.ch/linac2/sources/source.htm, Januar 2014.
+
+\bibitem{atlas}
+G.~Aad et~al.
+\newblock {The ATLAS Experiment at the CERN Large Hadron Collider}.
+\newblock {\em JINST}, 3:S08003, 2008.
+
+\bibitem{alice}
+K.~Aamodt et~al.
+\newblock {The ALICE experiment at the CERN LHC}.
+\newblock {\em JINST}, 3:S08002, 2008.
+
+\bibitem{lhcb}
+Jr. Alves, A.~Augusto et~al.
+\newblock {The LHCb Detector at the LHC}.
+\newblock {\em JINST}, 3:S08005, 2008.
+
+\bibitem{cernkomplex}
+Christiane Lefèvre.
+\newblock {The CERN accelerator complex. Complexe des accélérateurs du CERN}.
+\newblock http://cdsweb.cern.ch/record/1260465, Dec 2008.
+
+\bibitem{Chatrchyan:2008aa}
+S.~Chatrchyan et~al.
+\newblock {The CMS experiment at the CERN LHC}.
+\newblock {\em JINST}, 3:S08004, 2008.
+
+\bibitem{Sirunyan:2270046}
+CMS Collaboration.
+\newblock {Particle-flow reconstruction and global event description with the
+  CMS detector. Particle-flow reconstruction and global event description with
+  the CMS detector}.
+\newblock {\em JINST}, 12(CMS-PRF-14-001. CMS-PRF-14-001-004. 10):P10003. 82 p,
+  Jun 2017.
+\newblock Replaced with the published version. Added the journal reference and
+  DOI. All the figures and tables can be found at
+  http://cms-results.web.cern.ch/cms-results/public-results/publications/PRF-14-001
+  (CMS Public Pages).
+
+\bibitem{Khachatryan:2016kdb}
+CMS Collaboration.
+\newblock {Jet energy scale and resolution in the CMS experiment in pp
+  collisions at 8 TeV}.
+\newblock {\em JINST}, 12(02):P02014, 2017.
+
+\end{thebibliography}

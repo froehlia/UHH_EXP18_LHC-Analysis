@@ -1,0 +1,105 @@
+
+\documentclass[12pt,a4paper, twoside, openright]{article}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}                   % latin9 utf8
+\usepackage                              {subfigure}
+\usepackage     [utf8]                  {inputenc}
+\usepackage     [T1]                    {fontenc}
+\usepackage                             {color}
+\usepackage                             {amsmath}
+\usepackage							   {amssymb}
+\usepackage     [ngerman]               {babel}
+\usepackage                             {cite}
+\usepackage                             {hyperref}
+\usepackage                             {multirow}
+\usepackage  							{epstopdf}
+\usepackage		[onehalfspacing]			{setspace}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2cm]{geometry}
+
+\usepackage{listings}
+
+\usepackage{etoolbox}
+\pretocmd\section{\cleardoublepage}{}%
+  {\errmessage{Patching \noexpand\section failed}}
+
+\begin{document}
+%Silbentrennung (funktioniert auf deutsch nicht immer)
+\hyphenation{ar-bei-ten}
+\hyphenation{Ar-beits-punkt Ar-beits-punk-te Ar-beits-punk-ten}
+\hyphenation{Auf-l"o-sung Auf-l"o-sun-gen}
+\hyphenation{aus-schlie"s-lich}
+\hyphenation{Aus-tausch-teil-chen}
+\hyphenation{Be-schrei-bung}
+\hyphenation{Be-stim-mung}
+\hyphenation{Bo-son Bo-son-en}
+\hyphenation{brei-tet}
+\hyphenation{De-tek-tor-ma-ter-ial}
+\hyphenation{Dis-kri-mi-na-tor Dis-kri-mi-na-tors}
+\hyphenation{ein-ge-zeich-net}
+\hyphenation{End-zu-stand}
+\hyphenation{Ent-falt-ungs-me-tho-de}
+\hyphenation{ent-spre-chen-den}
+\hyphenation{Ent-wick-lung-en}
+\hyphenation{Er-eig-nis Er-eig-nisse}
+\hyphenation{ge-ring}
+\hyphenation{Kop-plungs-konst-an-te}
+\hyphenation{Mes-sun-gen}
+\hyphenation{Miss-iden-ti-fi-ka-tions-ra-te}
+\hyphenation{Mo-dell Mo-del-le}
+\hyphenation{m"uss-ten}
+\hyphenation{or-tho-go-nal}
+\hyphenation{pa-ra-me-tri-siert}
+\hyphenation{re-gu-la-ri-sie-ren re-gu-la-ri-sier-ten}
+\hyphenation{Schwer-punkts-en-er-gie Schwer-punkts-en-er-gien}
+\hyphenation{sei-ner}
+\hyphenation{selbst}
+\hyphenation{si-mu-liert-en si-mu-liert si-mu-lier-en si-mu-lierte}
+\hyphenation{Sym-me-trie-grup-pe}
+\hyphenation{sys-te-ma-tisch-en}
+\hyphenation{Ty-pi-scher-wei-se ty-pi-scher-wei-se}
+\hyphenation{um-fang-reich um-fang-rei-cher}
+\hyphenation{Un-si-cher-heit Un-si-cher-hei-ten}
+\hyphenation{Un-ter-grund Un-ter-grund-er-eig-nis-se Un-ter-grund-er-eig-nis-sen}
+\hyphenation{ver-an-schau-licht}
+\hyphenation{Wahr-schein-lich-keit}
+\hyphenation{Wechsel-wirk-ung Wechsel-wir-kun-gen}
+\hyphenation{wei-cher}
+\hyphenation{Wei-te-ren}
+\hyphenation{wes-halb}
+\hyphenation{Wir-kungs-quer-schnitts Wir-kungs-quer-schnitt}
+\hyphenation{zwi-schen}
+\hyphenation{Kennt-nisse}
+\hyphenation{konn-ten}
+
+\title{Studium von Top-Quark-Paaren am LHC   \vspace{2cm}  \\ \centerline{\includegraphics[scale=0.22]{eventdisplay.png}} \vspace{2cm}} 
+\date{2019}
+\author{Alexander Fr\"ohlich, Arne Reimers \\ Universit\"at Hamburg \\ Praktikum f\"ur Fortgeschrittene}
+\maketitle
+\thispagestyle{empty}
+\newpage \thispagestyle{empty}
+\tableofcontents
+\thispagestyle{empty}
+\newpage\thispagestyle{empty}
+\cleardoublepage{}
+
+
+
+\include{introduction}
+
+\include{theorie}
+
+\include{lhc}
+
+\include{dataset}
+
+%\include{dataformat}
+
+\newpage
+\include{analysis}
+
+\include{eval}
+
+\bibliography{references}{}
+\bibliographystyle{unsrt}
+
+\end{document}

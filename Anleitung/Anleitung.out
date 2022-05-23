@@ -1,0 +1,23 @@
+\BOOKMARK [1][-]{section.1}{Einleitung}{}% 1
+\BOOKMARK [1][-]{section.2}{Theoretische Grundlagen}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Das Standardmodell der Teilchenphysik}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Physik des Top-Quarks}{section.2}% 4
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Top-Quark-Produktion am LHC}{subsection.2.2}% 5
+\BOOKMARK [3][-]{subsubsection.2.2.2}{Masse und Zerfall des Top-Quarks}{subsection.2.2}% 6
+\BOOKMARK [1][-]{section.3}{Der LHC und das CMS-Experiment}{}% 7
+\BOOKMARK [2][-]{subsection.3.1}{Der Large Hadron Collider}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.2}{Teilchen-Identifizierung im Detektor}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.3}{Jets und Jet Energie Korrekturen}{section.3}% 10
+\BOOKMARK [1][-]{section.4}{Datensatz und Monte-Carlo-Simulation}{}% 11
+\BOOKMARK [1][-]{section.5}{Vorbereitung \(vor Praktikumsbeginn\)}{}% 12
+\BOOKMARK [1][-]{section.6}{Aufgaben}{}% 13
+\BOOKMARK [2][-]{subsection.6.1}{Event Displays mit der Fireworks-Software}{section.6}% 14
+\BOOKMARK [2][-]{subsection.6.2}{Einf\374hrung in das Analyse-Framework}{section.6}% 15
+\BOOKMARK [2][-]{subsection.6.3}{Aufgabe 1: Eigenschaften von Top-Quark-Ereignissen}{section.6}% 16
+\BOOKMARK [3][-]{subsubsection.6.3.1}{Aufgabe 1.1:}{subsection.6.3}% 17
+\BOOKMARK [3][-]{subsubsection.6.3.2}{Aufgabe 1.2}{subsection.6.3}% 18
+\BOOKMARK [2][-]{subsection.6.4}{Aufgabe 2: Messung des Wirkungsquerschnitts}{section.6}% 19
+\BOOKMARK [2][-]{subsection.6.5}{Aufgabe 3: Rekonstruktion der Top Quark Masse}{section.6}% 20
+\BOOKMARK [3][-]{subsubsection.6.5.1}{Methode zur Rekonstruktion}{subsection.6.5}% 21
+\BOOKMARK [3][-]{subsubsection.6.5.2}{Messung der rekonstruierten Top Quark Masse}{subsection.6.5}% 22
+\BOOKMARK [1][-]{section.7}{Auswertung}{}% 23
